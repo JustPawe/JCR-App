@@ -17,13 +17,16 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.markpaveszka.jcrapp.Config;
+import com.markpaveszka.jcrapp.Event;
 import com.markpaveszka.jcrapp.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EventsFragment extends Fragment {
 
     private EventsViewModel eventsViewModel;
+    private ArrayList<Event> events;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class EventsFragment extends Fragment {
                 .build();
         final String spreadsheetId = Config.spreadsheet_id;
 
+        events = new ArrayList<>();
+
         new Thread() {
             @Override
             public void run() {
@@ -48,7 +53,20 @@ public class EventsFragment extends Fragment {
                             .execute();
                     int numRows = result.getValues() != null ? result.getValues().size() : 0;
                     Log.d("SUCCESS.", "rows retrived " + numRows);
+                    for (int i=1; i<numRows; i++)
+                    {
+                        events.add(new Event(
+                                result.getValues().get(i).get(0).toString(),
+                                result.getValues().get(i).get(1).toString(),
+                                result.getValues().get(i).get(4).toString(),
+                                result.getValues().get(i).get(5).toString()));
+                        events.get(i-1).setDateTime(
+                                result.getValues().get(i).get(2).toString(),
+                                result.getValues().get(i).get(3).toString()
+                        );
+                    }
                     Log.d("result", result.getValues().get(1).get(0).toString());
+                    Log.i("event", events.get(0).toString());
                 }
                 catch (IOException e) {
                     Log.e("Sheets failed", e.getLocalizedMessage());
