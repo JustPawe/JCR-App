@@ -18,25 +18,25 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_history"
         android:name="com.markpaveszka.jcrapp.ui.history.HistoryFragment"
         android:label="@string/menu_history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_sports"
         android:name="com.markpaveszka.jcrapp.ui.sports.SportsFragment"
         android:label="@string/menu_sports"
         tools:layout="@layout/fragment_sports" />
 
     <fragment
-        android:id="@+id/nav_share"
+        android:id="@+id/nav_events"
         android:name="com.markpaveszka.jcrapp.ui.events.EventsFragment"
         android:label="@string/menu_events"
         tools:layout="@layout/fragment_events" />
 
     <fragment
-        android:id="@+id/nav_send"
+        android:id="@+id/nav_contact"
         android:name="com.markpaveszka.jcrapp.ui.contact.ContactFragment"
         android:label="@string/menu_contact"
         tools:layout="@layout/fragment_contact" />
