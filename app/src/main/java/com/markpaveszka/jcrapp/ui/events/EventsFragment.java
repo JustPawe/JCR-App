@@ -17,7 +17,6 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.markpaveszka.jcrapp.Config;
-import com.markpaveszka.jcrapp.Event;
 import com.markpaveszka.jcrapp.R;
 
 import java.io.IOException;

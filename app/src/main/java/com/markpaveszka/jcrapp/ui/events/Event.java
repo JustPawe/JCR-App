@@ -1,4 +1,4 @@
-package com.markpaveszka.jcrapp;
+package com.markpaveszka.jcrapp.ui.events;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
