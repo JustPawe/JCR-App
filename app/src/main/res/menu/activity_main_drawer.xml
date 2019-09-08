@@ -13,23 +13,19 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_sports"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_sports" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_events"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_events" />
-
-
         <item
-            android:id="@+id/nav_share"
+            android:id="@+id/nav_contact"
             android:icon="@drawable/ic_menu_share"
             android:title="@string/menu_contact" />
         <item
-            android:id="@+id/nav_send"
+            android:id="@+id/nav_history"
             android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_history" />
-
-
 </menu>
