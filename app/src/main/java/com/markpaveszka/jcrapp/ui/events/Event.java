@@ -1,5 +1,7 @@
 package com.markpaveszka.jcrapp.ui.events;
 
+import android.graphics.Bitmap;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,13 +12,14 @@ public class Event
     private String venue;
     private String duration;
     private Date date;
-    private String imgUrl;
 
-    public Event(String name, String venue, String duration, String imgUrl) {
+
+    private Bitmap imgBitmap;
+
+    public Event(String name, String venue, String duration) {
         this.name = name;
         this.venue = venue;
         this.duration = duration;
-        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -31,9 +34,7 @@ public class Event
         return date;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
+    public Bitmap getImgBitmap() { return imgBitmap; }
 
     public String getDuration() {
         return duration;
@@ -52,14 +53,18 @@ public class Event
         }
     }
 
+    public void setImgBitmap(Bitmap imgBitmap) {
+        this.imgBitmap = imgBitmap;
+    }
+
+
     @Override
     public String toString()
     {
         return "Name: " + this.name + "\n" +
                 "Venue: " + this.venue + "\n" +
                 "Date: " + this.date.toString() + "\n" +
-                "Duration: " + this.duration + "\n" +
-                "IMG URL: " + this.imgUrl + "\n";
+                "Duration: " + this.duration + "\n";
     }
 
 

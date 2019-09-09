@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -15,6 +15,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.markpaveszka.jcrapp.ui.events.Event;
+import com.markpaveszka.jcrapp.ui.events.EventArrayAdapter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +26,7 @@ public class SpreadSheetsConnectionService {
     private FragmentActivity root;
     private View view;
     private ArrayList<Event> events;
-    private ImageView testIV;
+    private ListView eventsLV;
 
 
     public SpreadSheetsConnectionService(FragmentActivity root, View view)
@@ -44,10 +45,8 @@ public class SpreadSheetsConnectionService {
         final String spreadsheetId = Config.spreadsheet_id;
 
         events = new ArrayList<>();
-        testIV = view.findViewById(R.id.testIV);
+        eventsLV = view.findViewById(R.id.eventsLV);
 
-        if (testIV == null)
-        Log.i("test", "true");
 
 
         new Thread() {
@@ -66,19 +65,21 @@ public class SpreadSheetsConnectionService {
                         events.add(new Event(
                                 result.getValues().get(i).get(0).toString(),
                                 result.getValues().get(i).get(1).toString(),
-                                result.getValues().get(i).get(4).toString(),
-                                result.getValues().get(i).get(5).toString()));
+                                result.getValues().get(i).get(4).toString()));
                         events.get(i-1).setDateTime(
                                 result.getValues().get(i).get(2).toString(),
                                 result.getValues().get(i).get(3).toString()
                         );
+                        URL newurl = new URL(result.getValues().get(i).get(5).toString());
+                        final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                        events.get(i-1).setImgBitmap(mIcon_val);
                     }
-                    URL newurl = new URL(events.get(0).getImgUrl());
-                    final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+
                     root.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            testIV.setImageBitmap(mIcon_val);
+                            EventArrayAdapter adapter = new EventArrayAdapter(root, R.layout.event_list_layout, events);
+                            eventsLV.setAdapter(adapter);
                         }
                     });
 
