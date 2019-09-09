@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -107,7 +108,8 @@ public class SpreadSheetsConnectionService {
 
     public void getGallery()
     {
-        galleryPicIndex = 1;
+        galleryPicIndex = 1
+        ;
         if(galleryPics != null)
             galleryPics.clear();
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
@@ -128,6 +130,13 @@ public class SpreadSheetsConnectionService {
             @Override
             public void run() {
                 try {
+                    root.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(root,
+                                    "Please wait for a moment, while the image loads...", Toast.LENGTH_SHORT ).show();
+                        }
+                    });
                     String range = "Sheet1!J1:J30";
                     ValueRange result = sheetsService.spreadsheets().values()
                             .get(spreadsheetId, range)
@@ -164,20 +173,34 @@ public class SpreadSheetsConnectionService {
             @Override
             public void run() {
                 try {
+                    root.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(root,
+                                    "Please wait for a moment, while the image loads...", Toast.LENGTH_SHORT ).show();
+                        }
+                    });
                     if (galleryPicIndex < numberOfGalleryPics) {
                         galleryPicIndex++;
-                        URL newurl = new URL(galleryValueRange.getValues().get(galleryPicIndex).get(0).toString());
-                        final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-                        root.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                galleryIV.setImageBitmap(mIcon_val);
-                            }
-                        });
                     }
+                    else
+                    {
+                        galleryPicIndex = 1;
+                    }
+
+                    URL newurl = new URL(galleryValueRange.getValues().get(galleryPicIndex).get(0).toString());
+                    final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                    root.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            galleryIV.setImageBitmap(mIcon_val);
+                        }
+                    });
+
                 } catch (IOException e) {
                     Log.e("Sheets failed", e.getLocalizedMessage());
                 }
+
             }
         }.start();
     }
@@ -188,17 +211,28 @@ public class SpreadSheetsConnectionService {
             @Override
             public void run() {
                 try {
+                    root.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(root,
+                                    "Please wait for a moment, while the image loads...", Toast.LENGTH_SHORT ).show();
+                        }
+                    });
                     if (galleryPicIndex > 1) {
                         galleryPicIndex--;
-                        URL newurl = new URL(galleryValueRange.getValues().get(galleryPicIndex).get(0).toString());
-                        final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-                        root.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                galleryIV.setImageBitmap(mIcon_val);
-                            }
-                        });
                     }
+                    else {
+                        galleryPicIndex = numberOfGalleryPics;
+                    }
+                    URL newurl = new URL(galleryValueRange.getValues().get(galleryPicIndex).get(0).toString());
+                    final Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                    root.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            galleryIV.setImageBitmap(mIcon_val);
+                        }
+                    });
+
                 } catch (IOException e) {
                     Log.e("Sheets failed", e.getLocalizedMessage());
                 }
