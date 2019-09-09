@@ -7,4 +7,5 @@
     <color name="jcrYellow">#ccdc17</color>
     <color name="white">#fff</color>
     <color name="urlBlue">#0000EE</color>
+    <color name="activityBG">#e4e7e9</color>
 </resources>
