@@ -6,20 +6,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Event
+public class JCREvent
 {
     private String name;
     private String venue;
     private String duration;
     private Date date;
+    private String facebookLink;
 
 
     private Bitmap imgBitmap;
 
-    public Event(String name, String venue, String duration) {
+    public JCREvent(String name, String venue, String duration, String facebookLink) {
         this.name = name;
         this.venue = venue;
         this.duration = duration;
+        this.facebookLink = facebookLink;
     }
 
     public String getName() {
@@ -38,6 +40,10 @@ public class Event
 
     public String getDuration() {
         return duration;
+    }
+
+    public String getFacebookLink() {
+        return facebookLink;
     }
 
     public void setDateTime(String date, String startTime)
@@ -64,8 +70,10 @@ public class Event
         return "Name: " + this.name + "\n" +
                 "Venue: " + this.venue + "\n" +
                 "Date: " + this.date.toString() + "\n" +
-                "Duration: " + this.duration + "\n";
+                "Duration: " + this.duration + "\n" +
+                "Facebook: " + this.facebookLink + "\n";
     }
+
 
 
 }

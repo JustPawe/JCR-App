@@ -32,7 +32,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/bluelogo" />
+                app:srcCompat="@drawable/bluelogo"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/welcomeTV"

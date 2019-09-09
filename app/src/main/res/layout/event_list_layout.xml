@@ -17,7 +17,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="poster" />
 
     <TextView
         android:id="@+id/eventLocationTV"
@@ -28,7 +29,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/francois_one"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/jcrBlue"
@@ -45,7 +46,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/francois_one"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/jcrBlue"
@@ -62,7 +63,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="48dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/francois_one"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/jcrBlue"
@@ -78,7 +79,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="48dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/francois_one"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/jcrBlue"

@@ -21,7 +21,7 @@
         android:toXDelta="0"
         android:toYDelta="-40%p" /> -->
 
-    <alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    <alpha
         android:duration="3000"
         android:fromAlpha="0.0"
         android:repeatCount="0"
