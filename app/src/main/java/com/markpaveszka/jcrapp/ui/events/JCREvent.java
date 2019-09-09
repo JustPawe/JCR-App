@@ -1,22 +1,27 @@
 package com.markpaveszka.jcrapp.ui.events;
 
+import android.graphics.Bitmap;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Event
+public class JCREvent
 {
     private String name;
     private String venue;
     private String duration;
     private Date date;
-    private String imgUrl;
+    private String facebookLink;
 
-    public Event(String name, String venue, String duration, String imgUrl) {
+
+    private Bitmap imgBitmap;
+
+    public JCREvent(String name, String venue, String duration, String facebookLink) {
         this.name = name;
         this.venue = venue;
         this.duration = duration;
-        this.imgUrl = imgUrl;
+        this.facebookLink = facebookLink;
     }
 
     public String getName() {
@@ -31,12 +36,14 @@ public class Event
         return date;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
+    public Bitmap getImgBitmap() { return imgBitmap; }
 
     public String getDuration() {
         return duration;
+    }
+
+    public String getFacebookLink() {
+        return facebookLink;
     }
 
     public void setDateTime(String date, String startTime)
@@ -52,6 +59,11 @@ public class Event
         }
     }
 
+    public void setImgBitmap(Bitmap imgBitmap) {
+        this.imgBitmap = imgBitmap;
+    }
+
+
     @Override
     public String toString()
     {
@@ -59,8 +71,9 @@ public class Event
                 "Venue: " + this.venue + "\n" +
                 "Date: " + this.date.toString() + "\n" +
                 "Duration: " + this.duration + "\n" +
-                "IMG URL: " + this.imgUrl + "\n";
+                "Facebook: " + this.facebookLink + "\n";
     }
+
 
 
 }
