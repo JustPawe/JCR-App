@@ -46,8 +46,12 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         TextView eventLocationTV = (TextView) convertView.findViewById(R.id.eventLocationTV);
         ImageView posterImageView = (ImageView) convertView.findViewById(R.id.posterIV);
 
-        eventDateTV.setText(e.getDate().toString());
-        eventDurationTV.setText(e.getDuration());
+
+        String date = e.getDate().toString();
+        String [] temp = date.split("GMT");
+        eventDateTV.setText(temp[0]);
+//        eventDateTV.setText(e.getDate().toString());
+        eventDurationTV.setText("Duration: " +e.getDuration());
         eventLocationTV.setText(e.getVenue());
         eventTitleTV.setText(e.getName());
         posterImageView.setImageBitmap(e.getImgBitmap());
