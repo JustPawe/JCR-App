@@ -37,7 +37,7 @@
                 android:contentDescription="TODO" />
 
             <ImageView
-                android:id="@+id/hulmeIV"
+                android:id="@+id/history"
                 android:layout_width="380dp"
                 android:layout_height="287dp"
                 android:layout_marginTop="16dp"
@@ -83,7 +83,7 @@
                 android:textColor="@color/urlBlue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hulmeIV" />
+                app:layout_constraintTop_toBottomOf="@+id/history" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
